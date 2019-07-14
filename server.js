@@ -5,7 +5,8 @@ const fs = require("fs");
 const contents = fs.readFileSync("physicians.json");
 const physiciansObj = JSON.parse(contents);
 const app = express();
-const {apiKey} = require('./key')
+const apiKey = 'AIzaSyDJ_3zDS3YqZ0RkN3M2NMZ7zSfpBY0qN2g' 
+// const {apiKey} = require('./key')
 const port = process.env.PORT || 3000;
 app.use(express.static(path.join(__dirname, 'build')));
 
