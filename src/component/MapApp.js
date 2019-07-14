@@ -9,12 +9,15 @@ export default class MapApp extends React.Component {
     }
 
     handleClick = () => {
-        axios.get(`/find?name=${document.getElementById('content').value}`)
-            .then(res => {
+        axios.get(`/api/find?name=${document.getElementById('content').value}`)
+            .then((res) => {
+                console.log('++++++++++',res)
+                if(!res.data){
+                    alert('try another name!!')
+                    return
+                }
                 const position = { lat: res.data['lat'], lng: res.data['lng'] }
-                console.log(position)
                 this.setState(()=>({position: position}));
-                console.log('updated state:', this.state.position)
             })
     }
 
