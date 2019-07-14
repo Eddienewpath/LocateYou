@@ -5,13 +5,14 @@ const fs = require("fs");
 const contents = fs.readFileSync("physicians.json");
 const physiciansObj = JSON.parse(contents);
 const app = express();
-const apiKey = 'AIzaSyDJ_3zDS3YqZ0RkN3M2NMZ7zSfpBY0qN2g'
+const {apiKey} = require('./key')
 const port = process.env.PORT || 3000;
 app.use(express.static(path.join(__dirname, 'build')));
 
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'build', 'index.html'));
 })
+
 
 app.get('/api/find', (req, res) => {
     let name = req.query['name']
@@ -51,6 +52,7 @@ app.get('/api/find', (req, res) => {
         res.send('')
         return 
     }
+
     const location = `${phy[0].address}, ${phy[0].city}, ${phy[0].state}`
     console.log(location)
     const encodedAddr = encodeURIComponent(location)
@@ -63,6 +65,8 @@ app.get('/api/find', (req, res) => {
         }
     })
 })
+
+
 
 app.get('/api/physicians', (req, res) => {
     res.sendFile(path.join(__dirname, 'physicians.json'))

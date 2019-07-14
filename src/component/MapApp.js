@@ -11,7 +11,6 @@ export default class MapApp extends React.Component {
     handleClick = () => {
         axios.get(`/api/find?name=${document.getElementById('content').value}`)
             .then((res) => {
-                console.log('++++++++++',res)
                 if(!res.data){
                     alert('try another name!!')
                     return

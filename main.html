@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        /* Set the size of the div element that contains the map */
+        #map {
+            height: 400px;
+            /* The height is 400 pixels */
+            width: 100%;
+            /* The width is the width of the web page */
+            margin: 15px auto 
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+</head>
+<body>
+    <h3>Locate your phycians</h3>
+    <div>
+        <input id='content'type="text" name='name'>
+        <input id='btn' type="submit" value='Find'>
+    </div>
+    <!--The div element for the map -->
+    <div id="map"></div>
+    <script>
+        // Initialize and add the map
+        function initMap() {
+            var sf = { lat: 37.7749, lng: -122.4194 };
+            // The map, centered at Uluru
+            var map = new google.maps.Map(
+                document.getElementById('map'), { zoom: 5, center: sf });
+            // The marker, positioned at Uluru
+            var marker = new google.maps.Marker({ position: sf, map: map });
+        }
+
+        // ajax call to server for geo-info
+        $('#btn').click(function(e){
+            console.log('clicked')
+            e.preventDefault()
+            $.ajax({
+                url: '/find?name=' + $('#content').val(),
+                method: 'GET'
+            })
+            .done(function(res){
+                console.log('got here?')
+                var locate = {lat: res['lat'], lng:res['lng']}
+                var map = new google.maps.Map(
+                    document.getElementById('map'), { zoom: 5, center: locate});
+                var marker = new google.maps.Marker({ position: locate, map: map });
+            })
+        })
+    </script>
+    <!--Load the API from the specified URL
+    * The async attribute allows the browser to render the page while the API loads
+    * The key parameter will contain your own API key (which is not needed for this tutorial)
+    * The callback parameter executes the initMap() function
+    -->
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDJ_3zDS3YqZ0RkN3M2NMZ7zSfpBY0qN2g&callback=initMap">
+    </script>
+</body>
+
+</html>
