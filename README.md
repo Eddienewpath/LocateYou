@@ -16,7 +16,7 @@ Pin down the locaiton of the given username on the google map
 For simplicity, I did not intergrate MongoDB because the dataset is small enough to stay in memory. However, I did included a Mongoose Schema module for later use.
 Other module included:
 - parse.js for parsing raw dataset(csv)into JSON file 
-- main.html static page using Jquery Ajax to send request
+
 
 
 Links: 
