@@ -9,7 +9,6 @@ export default class MapApp extends React.Component {
     }
 
     handleClick = () => {
-        console.log(document.getElementById('content').value)
         axios.get(`/find?name=${document.getElementById('content').value}`)
             .then(res => {
                 const position = { lat: res.data['lat'], lng: res.data['lng'] }

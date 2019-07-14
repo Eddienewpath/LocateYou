@@ -31,7 +31,7 @@ app.get('/find', (req, res) => {
         res.send('wrong format')
     }
 
-    console.log('found:', phy)
+
     const location = `${phy[0].address}, ${phy[0].city}, ${phy[0].state}`
     console.log(location)
     const encodedAddr = encodeURIComponent(location)
