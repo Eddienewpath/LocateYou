@@ -6,7 +6,7 @@ Tech Stack:
 - Html/css/javascript
 - heroku
 - chrome
------------ alternative implementation stack ------------
+maybe: 
 - mongoDB
 - mongoose
 
