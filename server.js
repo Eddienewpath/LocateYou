@@ -1,3 +1,4 @@
+require('dotenv').config()
 const express = require('express');
 const path = require('path');
 const axios = require('axios');
@@ -5,7 +6,7 @@ const fs = require("fs");
 const contents = fs.readFileSync("physicians.json");
 const physiciansObj = JSON.parse(contents);
 const app = express();
-const {apiKey} = require('./key')
+const apiKey = process.env.API_KEY
 const port = process.env.PORT || 3000;
 app.use(express.static(path.join(__dirname, 'build')));
 

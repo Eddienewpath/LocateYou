@@ -17,7 +17,7 @@ class MapComponent extends React.Component {
 }
 
 export default GoogleApiWrapper({
-    apiKey
+    apiKey: 'AIzaSyDJ_3zDS3YqZ0RkN3M2NMZ7zSfpBY0qN2g'
 })(MapComponent)
 
 

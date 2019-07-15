@@ -1,10 +1,8 @@
 const csvFilePath = './dataset.csv'
 const fs = require('fs');
 const csv = require('csvtojson')
-// let mongoose = require('mongoose');
-// let { Physician } = require('./models/physician')
-// mongoose.connect('mongodb://localhost/Affine_challenge', { useNewUrlParser: true });
 
+//  utility function for later interating database into the app
 let init_db = function(){
     csv().fromFile(csvFilePath).then((jsonObj) => {
         const table = []
