@@ -7,6 +7,7 @@ const contents = fs.readFileSync("physicians.json");
 const physiciansObj = JSON.parse(contents);
 const app = express();
 const apiKey = process.env.API_KEY
+console.log(apiKey)
 const port = process.env.PORT || 3000;
 app.use(express.static(path.join(__dirname, 'build')));
 
